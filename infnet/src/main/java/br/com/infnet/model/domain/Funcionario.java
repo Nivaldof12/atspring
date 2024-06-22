@@ -1,6 +1,9 @@
 package br.com.infnet.model.domain;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.Date;
 
 @Entity
@@ -14,11 +17,13 @@ public class Funcionario {
     private String endereco;
     private String telefone;
     private String email;
+
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
     @ManyToOne
     @JoinColumn(name = "departamento_id")
+    @JsonBackReference
     private Departamento departamento;
 
 	public Long getId() {
